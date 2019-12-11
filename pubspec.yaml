@@ -1,8 +1,8 @@
 name: mcnmr_result_object_observer
-description: A new Flutter package project.
+description: Observer when object or the result changed.
 version: 0.0.1
-author:
-homepage:
+author: M Irfan Alfiansyah <irfanalfiansyah10@gmail.com>
+homepage: "https://github.com/irfanalfiansyah10/flutter-plugin-result_object_observer"
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
