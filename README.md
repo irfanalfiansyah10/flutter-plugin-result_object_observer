@@ -1,6 +1,6 @@
 # mcnmr_result_object_observer
 
-A new Flutter package project.
+Observer when object or the result changed
 
 ## Getting Started
 
