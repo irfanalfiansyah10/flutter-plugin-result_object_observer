@@ -8,7 +8,7 @@ class ResultObserverCombiner4Builder<A, B, C, D, E> extends StatefulWidget {
   final bool observeResultCChange;
   final bool observeResultDChange;
   final bool observeResultChange;
-  final Widget Function(A resultA, B resultB, C resultC, D resultD, E subscriber) builder;
+  final Widget Function(BuildContext context, A resultA, B resultB, C resultC, D resultD, E subscriber) builder;
 
   ResultObserverCombiner4Builder({
     @required this.observer,
@@ -64,6 +64,6 @@ class _ResultObserverCombiner4BuilderState<A, B, C, D, E> extends State<ResultOb
 
   @override
   Widget build(BuildContext context) {
-    return widget.builder(_lastAValue, _lastBValue, _lastCValue, _lastDValue, _lastEValue);
+    return widget.builder(context, _lastAValue, _lastBValue, _lastCValue, _lastDValue, _lastEValue);
   }
 }

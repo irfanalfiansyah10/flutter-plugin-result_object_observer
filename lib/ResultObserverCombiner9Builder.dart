@@ -13,7 +13,7 @@ class ResultObserverCombiner9Builder<A, B, C, D, E, F, G, H, I, J> extends State
   final bool observeResultHChange;
   final bool observeResultIChange;
   final bool observeResultChange;
-  final Widget Function(A resultA, B resultB, C resultC, D resultD, E resultE, F resultF, G resultG, H resultH, I resultI, J subscriber) builder;
+  final Widget Function(BuildContext context, A resultA, B resultB, C resultC, D resultD, E resultE, F resultF, G resultG, H resultH, I resultI, J subscriber) builder;
 
   ResultObserverCombiner9Builder({
     @required this.observer,
@@ -103,6 +103,6 @@ class _ResultObserverCombiner9BuilderState<A, B, C, D, E, F, G, H, I, J> extends
 
   @override
   Widget build(BuildContext context) {
-    return widget.builder(_lastAValue, _lastBValue, _lastCValue, _lastDValue, _lastEValue, _lastFValue, _lastGValue, _lastHValue, _lastIValue, _lastJValue);
+    return widget.builder(context, _lastAValue, _lastBValue, _lastCValue, _lastDValue, _lastEValue, _lastFValue, _lastGValue, _lastHValue, _lastIValue, _lastJValue);
   }
 }

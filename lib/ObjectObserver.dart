@@ -54,4 +54,12 @@ class ObjectObserver<Object, Subscriber> extends ChangeNotifier{
       subs(_value);
     });
   }
+
+
+  /// Just in case when you really need it
+  void forceNotify(){
+    _subscriber = predictable(_value);
+    notifyListeners();
+  }
+
 }

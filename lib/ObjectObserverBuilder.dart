@@ -1,41 +1,32 @@
 import 'package:flutter/widgets.dart';
 import 'package:mcnmr_result_object_observer/ObjectObserver.dart';
 
-class ObjectObserverBuilder<A, B> extends StatefulWidget {
-  final ObjectObserver<A, B> observer;
-  final bool observeObjectChange;
-  final bool observeResultChange;
-  final Widget Function(A object, B subscriber) builder;
+class ObjectObserverBuilder<A> extends StatefulWidget {
+  final ObjectObserver<A, dynamic> observer;
+  final Widget Function(BuildContext context, A object) builder;
 
   ObjectObserverBuilder({
     @required this.observer,
     @required this.builder,
-    this.observeObjectChange = true,
-    this.observeResultChange = true
   });
 
   @override
-  State<ObjectObserverBuilder<A, B>> createState() => _ObjectObserverBuilderState<A, B>();
+  State<ObjectObserverBuilder<A>> createState() => _ObjectObserverBuilderState<A>();
 }
 
-class _ObjectObserverBuilderState<A, B> extends State<ObjectObserverBuilder<A, B>> {
+class _ObjectObserverBuilderState<A> extends State<ObjectObserverBuilder<A>> {
   A _lastAValue;
-  B _lastBValue;
 
   @override
   void initState() {
     super.initState();
-    if(widget.observeObjectChange){
-      widget.observer.subscribeObject((value) => setState(() => _lastAValue = value));
-    }
+    _lastAValue = widget.observer.value;
 
-    if(widget.observeResultChange){
-      widget.observer.subscribeResult((value) => setState(() => _lastBValue = value));
-    }
+    widget.observer.subscribeObject((value) => setState(() => _lastAValue = value));
   }
 
   @override
   Widget build(BuildContext context) {
-    return widget.builder(_lastAValue, _lastBValue);
+    return widget.builder(context, _lastAValue);
   }
 }

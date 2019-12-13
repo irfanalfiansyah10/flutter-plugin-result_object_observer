@@ -9,7 +9,7 @@ class ObjectObserverCombiner5Builder<A, B, C, D, E, F> extends StatefulWidget {
   final bool observeObjectDChange;
   final bool observeObjectEChange;
   final bool observeResultChange;
-  final Widget Function(A objectA, B objectB, C objectC, D objectD, E objectE, F result) builder;
+  final Widget Function(BuildContext context, A objectA, B objectB, C objectC, D objectD, E objectE, F result) builder;
 
   ObjectObserverCombiner5Builder({
     @required this.observer,
@@ -73,6 +73,6 @@ class _ObjectObserverCombiner5BuilderState<A, B, C, D, E, F>
 
   @override
   Widget build(BuildContext context) {
-    return widget.builder(_lastAValue, _lastBValue, _lastCValue, _lastDValue, _lastEValue, _lastFValue);
+    return widget.builder(context, _lastAValue, _lastBValue, _lastCValue, _lastDValue, _lastEValue, _lastFValue);
   }
 }
