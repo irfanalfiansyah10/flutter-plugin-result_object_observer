@@ -1,5 +1,3 @@
-library mcnmr_result_object_observer;
-
 import 'package:flutter/widgets.dart';
 import 'package:mcnmr_result_object_observer/ObjectObserver.dart';
 

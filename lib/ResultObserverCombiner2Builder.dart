@@ -1,5 +1,3 @@
-library mcnmr_result_object_observer;
-
 import 'package:flutter/widgets.dart';
 import 'ResultObserverCombiner2.dart';
 
@@ -30,6 +28,10 @@ class _ResultObserverCombiner2BuilderState<A, B, C> extends State<ResultObserver
   @override
   void initState() {
     super.initState();
+    _lastAValue = widget.observer.observerA.subscriber;
+    _lastBValue = widget.observer.observerB.subscriber;
+    _lastCValue = widget.observer.value;
+
     if(widget.observeResultAChange){
       widget.observer.subscribeA((value) => setState(() => _lastAValue = value));
     }

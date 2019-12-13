@@ -1,5 +1,3 @@
-library mcnmr_result_object_observer;
-
 import 'package:flutter/widgets.dart';
 
 class ObjectObserver<Object, Subscriber> extends ChangeNotifier{

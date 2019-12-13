@@ -1,14 +1,12 @@
-library mcnmr_result_object_observer;
-
 import 'package:flutter/widgets.dart';
 
 import 'ObjectObserver.dart';
 
 class ResultObserverCombiner3<A, B, C, D> extends ChangeNotifier{
 
-  ObjectObserver<dynamic, A> _observerA;
-  ObjectObserver<dynamic, B> _observerB;
-  ObjectObserver<dynamic, C> _observerC;
+  ObjectObserver<dynamic, A> observerA;
+  ObjectObserver<dynamic, B> observerB;
+  ObjectObserver<dynamic, C> observerC;
 
   get value => _value;
   D _value;
@@ -31,35 +29,35 @@ class ResultObserverCombiner3<A, B, C, D> extends ChangeNotifier{
       ObjectObserver<dynamic, C> c,
       D Function(A, B, C) map){
 
-    _observerA = a;
-    _observerB = b;
-    _observerC = c;
+    observerA = a;
+    observerB = b;
+    observerC = c;
 
-    value = map(a.value, b.value, c.value);
+    value = map(a.subscriber, b.subscriber, c.subscriber);
 
     a.subscribeResult((v){
-      value = map(v, b.value, c.value);
+      value = map(v, b.subscriber, c.subscriber);
     });
 
     b.subscribeResult((v){
-      value = map(a.value, v, c.value);
+      value = map(a.subscriber, v, c.subscriber);
     });
 
     c.subscribeObject((v){
-      value = map(a.value, b.value, v);
+      value = map(a.subscriber, b.subscriber, v);
     });
   }
 
   void subscribeA(Function(A value) subscriber){
-    _observerA.subscribeResult((value) => subscriber(value));
+    observerA.subscribeResult((value) => subscriber(value));
   }
 
   void subscribeB(Function(B value) subscriber){
-    _observerB.subscribeResult((value) => subscriber(value));
+    observerB.subscribeResult((value) => subscriber(value));
   }
 
   void subscribeC(Function(C value) subscriber){
-    _observerC.subscribeResult((value) => subscriber(value));
+    observerC.subscribeResult((value) => subscriber(value));
   }
 
   void subscribeResult(Function(D value) subscriber){

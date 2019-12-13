@@ -1,15 +1,13 @@
-library mcnmr_result_object_observer;
-
 import 'package:flutter/widgets.dart';
 import 'ObjectObserver.dart';
 
 class ObjectObserverCombiner5<A, B, C, D, E, F> extends ChangeNotifier{
 
-  ObjectObserver<A, dynamic> _observerA;
-  ObjectObserver<B, dynamic> _observerB;
-  ObjectObserver<C, dynamic> _observerC;
-  ObjectObserver<D, dynamic> _observerD;
-  ObjectObserver<E, dynamic> _observerE;
+  ObjectObserver<A, dynamic> observerA;
+  ObjectObserver<B, dynamic> observerB;
+  ObjectObserver<C, dynamic> observerC;
+  ObjectObserver<D, dynamic> observerD;
+  ObjectObserver<E, dynamic> observerE;
 
   F _value;
   get value => _value;
@@ -34,11 +32,11 @@ class ObjectObserverCombiner5<A, B, C, D, E, F> extends ChangeNotifier{
       ObjectObserver<E, dynamic> e,
       F Function(A, B, C, D, E) map){
 
-    _observerA = a;
-    _observerB = b;
-    _observerC = c;
-    _observerD = d;
-    _observerE = e;
+    observerA = a;
+    observerB = b;
+    observerC = c;
+    observerD = d;
+    observerE = e;
 
     value = map(a.value, b.value, c.value, d.value, e.value);
 
@@ -64,23 +62,23 @@ class ObjectObserverCombiner5<A, B, C, D, E, F> extends ChangeNotifier{
   }
 
   void subscribeA(Function(A value) subscriber){
-    _observerA.subscribeObject((val) => subscriber(val));
+    observerA.subscribeObject((val) => subscriber(val));
   }
 
   void subscribeB(Function(B value) subscriber){
-    _observerB.subscribeObject((val) => subscriber(val));
+    observerB.subscribeObject((val) => subscriber(val));
   }
 
   void subscribeC(Function(C value) subscriber){
-    _observerC.subscribeObject((val) => subscriber(val));
+    observerC.subscribeObject((val) => subscriber(val));
   }
 
   void subscribeD(Function(D value) subscriber){
-    _observerD.subscribeObject((val) => subscriber(val));
+    observerD.subscribeObject((val) => subscriber(val));
   }
 
   void subscribeE(Function(E value) subscriber){
-    _observerE.subscribeObject((val) => subscriber(val));
+    observerE.subscribeObject((val) => subscriber(val));
   }
 
   void subscribeResult(Function(F value) subscriber){

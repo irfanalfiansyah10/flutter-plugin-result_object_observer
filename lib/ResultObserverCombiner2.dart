@@ -1,13 +1,11 @@
-library mcnmr_result_object_observer;
-
 import 'package:flutter/widgets.dart';
 
 import 'ObjectObserver.dart';
 
 class ResultObserverCombiner2<A, B, C> extends ChangeNotifier{
 
-  ObjectObserver<dynamic, A> _observerA;
-  ObjectObserver<dynamic, B> _observerB;
+  ObjectObserver<dynamic, A> observerA;
+  ObjectObserver<dynamic, B> observerB;
 
   get value => _value;
   C _value;
@@ -29,25 +27,25 @@ class ResultObserverCombiner2<A, B, C> extends ChangeNotifier{
       ObjectObserver<dynamic, B> b,
       C Function(A, B) map){
 
-    _observerA = a;
-    _observerB = b;
-    value = map(a.value, b.value);
+    observerA = a;
+    observerB = b;
+    value = map(a.subscriber, b.subscriber);
 
     a.subscribeResult((v){
-      value = map(v, b.value);
+      value = map(v, b.subscriber);
     });
 
     b.subscribeResult((v){
-      value = map(a.value, v);
+      value = map(a.subscriber, v);
     });
   }
 
   void subscribeA(Function(A value) subscriber){
-    _observerA.subscribeResult((value) => subscriber(value));
+    observerA.subscribeResult((value) => subscriber(value));
   }
 
   void subscribeB(Function(B value) subscriber){
-    _observerB.subscribeResult((value) => subscriber(value));
+    observerB.subscribeResult((value) => subscriber(value));
   }
 
   void subscribeResult(Function(C value) subscriber){

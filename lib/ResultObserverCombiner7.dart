@@ -1,17 +1,15 @@
-library mcnmr_result_object_observer;
-
 import 'package:flutter/widgets.dart';
 import 'ObjectObserver.dart';
 
 class ResultObserverCombiner7<A, B, C, D, E, F, G, H> extends ChangeNotifier{
 
-  ObjectObserver<A, dynamic> _observerA;
-  ObjectObserver<B, dynamic> _observerB;
-  ObjectObserver<C, dynamic> _observerC;
-  ObjectObserver<D, dynamic> _observerD;
-  ObjectObserver<E, dynamic> _observerE;
-  ObjectObserver<F, dynamic> _observerF;
-  ObjectObserver<G, dynamic> _observerG;
+  ObjectObserver<dynamic, A> observerA;
+  ObjectObserver<dynamic, B> observerB;
+  ObjectObserver<dynamic, C> observerC;
+  ObjectObserver<dynamic, D> observerD;
+  ObjectObserver<dynamic, E> observerE;
+  ObjectObserver<dynamic, F> observerF;
+  ObjectObserver<dynamic, G> observerG;
 
   H _value;
   get value => _value;
@@ -29,80 +27,80 @@ class ResultObserverCombiner7<A, B, C, D, E, F, G, H> extends ChangeNotifier{
     notifyListeners();
   }
 
-  ResultObserverCombiner7.combine(ObjectObserver<A, dynamic> a,
-      ObjectObserver<B, dynamic> b,
-      ObjectObserver<C, dynamic> c,
-      ObjectObserver<D, dynamic> d,
-      ObjectObserver<E, dynamic> e,
-      ObjectObserver<F, dynamic> f,
-      ObjectObserver<G, dynamic> g,
+  ResultObserverCombiner7.combine(ObjectObserver<dynamic, A> a,
+      ObjectObserver<dynamic, B> b,
+      ObjectObserver<dynamic, C> c,
+      ObjectObserver<dynamic, D> d,
+      ObjectObserver<dynamic, E> e,
+      ObjectObserver<dynamic, F> f,
+      ObjectObserver<dynamic, G> g,
       H Function(A, B, C, D, E, F, G) map){
 
-    _observerA = a;
-    _observerB = b;
-    _observerC = c;
-    _observerD = d;
-    _observerE = e;
-    _observerF = f;
-    _observerG = g;
+    observerA = a;
+    observerB = b;
+    observerC = c;
+    observerD = d;
+    observerE = e;
+    observerF = f;
+    observerG = g;
 
-    value = map(a.value, b.value, c.value, d.value, e.value, f.value, g.value);
+    value = map(a.subscriber, b.subscriber, c.subscriber, d.subscriber, e.subscriber, f.subscriber, g.subscriber);
 
     a.subscribeObject((v){
-      value = map(v, b.value, c.value, d.value, e.value, f.value, g.value);
+      value = map(v, b.subscriber, c.subscriber, d.subscriber, e.subscriber, f.subscriber, g.subscriber);
     });
 
     b.subscribeObject((v){
-      value = map(a.value, v, c.value, d.value, e.value, f.value, g.value);
+      value = map(a.subscriber, v, c.subscriber, d.subscriber, e.subscriber, f.subscriber, g.subscriber);
     });
 
     c.subscribeObject((v){
-      value = map(a.value, b.value, v, d.value, e.value, f.value,g.value );
+      value = map(a.subscriber, b.subscriber, v, d.subscriber, e.subscriber, f.subscriber,g.subscriber );
     });
 
     d.subscribeObject((v){
-      value = map(a.value, b.value, c.value, v, e.value, f.value, g.value);
+      value = map(a.subscriber, b.subscriber, c.subscriber, v, e.subscriber, f.subscriber, g.subscriber);
     });
 
     e.subscribeObject((v){
-      value = map(a.value, b.value, c.value, d.value, v, f.value, g.value);
+      value = map(a.subscriber, b.subscriber, c.subscriber, d.subscriber, v, f.subscriber, g.subscriber);
     });
 
     f.subscribeObject((v){
-      value = map(a.value, b.value, c.value, d.value, e.value, v, g.value);
+      value = map(a.subscriber, b.subscriber, c.subscriber, d.subscriber, e.subscriber, v, g.subscriber);
     });
 
     g.subscribeObject((v){
-      value = map(a.value, b.value, c.value, d.value, e.value, f.value, v);
+      value = map(a.subscriber, b.subscriber, c.subscriber, d.subscriber, e.subscriber, f.subscriber, v);
     });
   }
 
   void subscribeA(Function(A value) subscriber){
-    _observerA.subscribeObject((val) => subscriber(val));
+    observerA.subscribeObject((val) => subscriber(val));
   }
 
   void subscribeB(Function(B value) subscriber){
-    _observerB.subscribeObject((val) => subscriber(val));
+    observerB.subscribeObject((val) => subscriber(val));
   }
 
   void subscribeC(Function(C value) subscriber){
-    _observerC.subscribeObject((val) => subscriber(val));
+    observerC.subscribeObject((val) => subscriber(val));
   }
 
   void subscribeD(Function(D value) subscriber){
-    _observerD.subscribeObject((val) => subscriber(val));
+    observerD.subscribeObject((val) => subscriber(val));
   }
 
   void subscribeE(Function(E value) subscriber){
-    _observerE.subscribeObject((val) => subscriber(val));
+    observerE.subscribeObject((val) => subscriber(val));
   }
 
   void subscribeF(Function(F value) subscriber){
-    _observerF.subscribeObject((val) => subscriber(val));
+    observerF.subscribeObject((val) => subscriber(val));
   }
 
   void subscribeG(Function(G value) subscriber){
-    _observerG.subscribeObject((val) => subscriber(val));
+    observerG.subscribeObject((val) => subscriber(val));
   }
 
   void subscribeResult(Function(H value) subscriber){
