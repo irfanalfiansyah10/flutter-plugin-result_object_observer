@@ -9,18 +9,18 @@ class ObjectObserverCombiner5Builder<A, B, C, D, E, F> extends StatefulWidget {
   final bool observeObjectDChange;
   final bool observeObjectEChange;
   final bool observeResultChange;
-  final Widget Function(BuildContext context, A objectA, B objectB, C objectC, D objectD, E objectE, F result) builder;
+  final Widget Function(BuildContext context, A objectA, B objectB, C objectC,
+      D objectD, E objectE, F result) builder;
 
-  ObjectObserverCombiner5Builder({
-    @required this.observer,
-    @required this.builder,
-    this.observeObjectAChange = true,
-    this.observeObjectBChange = true,
-    this.observeObjectCChange = true,
-    this.observeObjectDChange = true,
-    this.observeObjectEChange = true,
-    this.observeResultChange = true
-  });
+  ObjectObserverCombiner5Builder(
+      {@required this.observer,
+      @required this.builder,
+      this.observeObjectAChange = true,
+      this.observeObjectBChange = true,
+      this.observeObjectCChange = true,
+      this.observeObjectDChange = true,
+      this.observeObjectEChange = true,
+      this.observeResultChange = true});
 
   @override
   State<ObjectObserverCombiner5Builder<A, B, C, D, E, F>> createState() =>
@@ -46,33 +46,40 @@ class _ObjectObserverCombiner5BuilderState<A, B, C, D, E, F>
     _lastEValue = widget.observer.observerE.value;
     _lastFValue = widget.observer.value;
 
-    if(widget.observeObjectAChange){
-      widget.observer.subscribeA((value) => setState(() => _lastAValue = value));
+    if (widget.observeObjectAChange) {
+      widget.observer
+          .subscribeA((value) => setState(() => _lastAValue = value));
     }
 
-    if(widget.observeObjectBChange){
-      widget.observer.subscribeB((value) => setState(() => _lastBValue = value));
+    if (widget.observeObjectBChange) {
+      widget.observer
+          .subscribeB((value) => setState(() => _lastBValue = value));
     }
 
-    if(widget.observeObjectCChange){
-      widget.observer.subscribeC((value) => setState(() => _lastCValue = value));
+    if (widget.observeObjectCChange) {
+      widget.observer
+          .subscribeC((value) => setState(() => _lastCValue = value));
     }
 
-    if(widget.observeObjectDChange){
-      widget.observer.subscribeD((value) => setState(() => _lastDValue = value));
+    if (widget.observeObjectDChange) {
+      widget.observer
+          .subscribeD((value) => setState(() => _lastDValue = value));
     }
 
-    if(widget.observeObjectEChange){
-      widget.observer.subscribeE((value) => setState(() => _lastEValue = value));
+    if (widget.observeObjectEChange) {
+      widget.observer
+          .subscribeE((value) => setState(() => _lastEValue = value));
     }
 
-    if(widget.observeResultChange){
-      widget.observer.subscribeResult((value) => setState(() => _lastFValue = value));
+    if (widget.observeResultChange) {
+      widget.observer
+          .subscribeResult((value) => setState(() => _lastFValue = value));
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return widget.builder(context, _lastAValue, _lastBValue, _lastCValue, _lastDValue, _lastEValue, _lastFValue);
+    return widget.builder(context, _lastAValue, _lastBValue, _lastCValue,
+        _lastDValue, _lastEValue, _lastFValue);
   }
 }

@@ -7,22 +7,24 @@ class ObjectObserverCombiner3Builder<A, B, C, D> extends StatefulWidget {
   final bool observeObjectBChange;
   final bool observeObjectCChange;
   final bool observeResultChange;
-  final Widget Function(BuildContext context, A objectA, B objectB, C objectC, D result) builder;
+  final Widget Function(
+      BuildContext context, A objectA, B objectB, C objectC, D result) builder;
 
-  ObjectObserverCombiner3Builder({
-    @required this.observer,
-    @required this.builder,
-    this.observeObjectAChange = true,
-    this.observeObjectBChange = true,
-    this.observeObjectCChange = true,
-    this.observeResultChange = true
-  });
+  ObjectObserverCombiner3Builder(
+      {@required this.observer,
+      @required this.builder,
+      this.observeObjectAChange = true,
+      this.observeObjectBChange = true,
+      this.observeObjectCChange = true,
+      this.observeResultChange = true});
 
   @override
-  State<ObjectObserverCombiner3Builder<A, B, C, D>> createState() => _ObjectObserverCombiner3BuilderState<A, B, C, D>();
+  State<ObjectObserverCombiner3Builder<A, B, C, D>> createState() =>
+      _ObjectObserverCombiner3BuilderState<A, B, C, D>();
 }
 
-class _ObjectObserverCombiner3BuilderState<A, B, C, D> extends State<ObjectObserverCombiner3Builder<A, B, C, D>> {
+class _ObjectObserverCombiner3BuilderState<A, B, C, D>
+    extends State<ObjectObserverCombiner3Builder<A, B, C, D>> {
   A _lastAValue;
   B _lastBValue;
   C _lastCValue;
@@ -37,25 +39,30 @@ class _ObjectObserverCombiner3BuilderState<A, B, C, D> extends State<ObjectObser
     _lastCValue = widget.observer.observerC.value;
     _lastDValue = widget.observer.value;
 
-    if(widget.observeObjectAChange){
-      widget.observer.subscribeA((value) => setState(() => _lastAValue = value));
+    if (widget.observeObjectAChange) {
+      widget.observer
+          .subscribeA((value) => setState(() => _lastAValue = value));
     }
 
-    if(widget.observeObjectBChange){
-      widget.observer.subscribeB((value) => setState(() => _lastBValue = value));
+    if (widget.observeObjectBChange) {
+      widget.observer
+          .subscribeB((value) => setState(() => _lastBValue = value));
     }
 
-    if(widget.observeObjectCChange){
-      widget.observer.subscribeC((value) => setState(() => _lastCValue = value));
+    if (widget.observeObjectCChange) {
+      widget.observer
+          .subscribeC((value) => setState(() => _lastCValue = value));
     }
 
-    if(widget.observeResultChange){
-      widget.observer.subscribeResult((value) => setState(() => _lastDValue = value));
+    if (widget.observeResultChange) {
+      widget.observer
+          .subscribeResult((value) => setState(() => _lastDValue = value));
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return widget.builder(context, _lastAValue, _lastBValue, _lastCValue, _lastDValue);
+    return widget.builder(
+        context, _lastAValue, _lastBValue, _lastCValue, _lastDValue);
   }
 }

@@ -6,21 +6,23 @@ class ResultObserverCombiner2Builder<A, B, C> extends StatefulWidget {
   final bool observeResultAChange;
   final bool observeResultBChange;
   final bool observeResultChange;
-  final Widget Function(BuildContext context, A resultA, B resultB, C subscriber) builder;
+  final Widget Function(
+      BuildContext context, A resultA, B resultB, C subscriber) builder;
 
-  ResultObserverCombiner2Builder({
-    @required this.observer,
-    @required this.builder,
-    this.observeResultAChange = true,
-    this.observeResultBChange = true,
-    this.observeResultChange = true
-  });
+  ResultObserverCombiner2Builder(
+      {@required this.observer,
+      @required this.builder,
+      this.observeResultAChange = true,
+      this.observeResultBChange = true,
+      this.observeResultChange = true});
 
   @override
-  State<ResultObserverCombiner2Builder<A, B, C>> createState() => _ResultObserverCombiner2BuilderState<A, B, C>();
+  State<ResultObserverCombiner2Builder<A, B, C>> createState() =>
+      _ResultObserverCombiner2BuilderState<A, B, C>();
 }
 
-class _ResultObserverCombiner2BuilderState<A, B, C> extends State<ResultObserverCombiner2Builder<A, B, C>> {
+class _ResultObserverCombiner2BuilderState<A, B, C>
+    extends State<ResultObserverCombiner2Builder<A, B, C>> {
   A _lastAValue;
   B _lastBValue;
   C _lastCValue;
@@ -32,16 +34,19 @@ class _ResultObserverCombiner2BuilderState<A, B, C> extends State<ResultObserver
     _lastBValue = widget.observer.observerB.subscriber;
     _lastCValue = widget.observer.value;
 
-    if(widget.observeResultAChange){
-      widget.observer.subscribeA((value) => setState(() => _lastAValue = value));
+    if (widget.observeResultAChange) {
+      widget.observer
+          .subscribeA((value) => setState(() => _lastAValue = value));
     }
 
-    if(widget.observeResultBChange){
-      widget.observer.subscribeB((value) => setState(() => _lastBValue = value));
+    if (widget.observeResultBChange) {
+      widget.observer
+          .subscribeB((value) => setState(() => _lastBValue = value));
     }
 
-    if(widget.observeResultChange){
-      widget.observer.subscribeResult((value) => setState(() => _lastCValue = value));
+    if (widget.observeResultChange) {
+      widget.observer
+          .subscribeResult((value) => setState(() => _lastCValue = value));
     }
   }
 

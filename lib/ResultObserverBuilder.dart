@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
-import 'package:mcnmr_result_object_observer/ObjectObserver.dart';
+import 'package:mcnmr_result_object_observer/Holder.dart';
 
 class ResultObserverBuilder<A> extends StatefulWidget {
-  final ObjectObserver<dynamic, A> observer;
+  final Holder<dynamic, A> observer;
   final Widget Function(A subscriber) builder;
 
   ResultObserverBuilder({
@@ -11,7 +11,8 @@ class ResultObserverBuilder<A> extends StatefulWidget {
   });
 
   @override
-  State<ResultObserverBuilder<A>> createState() => _ResultObserverBuilderState<A>();
+  State<ResultObserverBuilder<A>> createState() =>
+      _ResultObserverBuilderState<A>();
 }
 
 class _ResultObserverBuilderState<A> extends State<ResultObserverBuilder<A>> {
@@ -22,7 +23,8 @@ class _ResultObserverBuilderState<A> extends State<ResultObserverBuilder<A>> {
     super.initState();
     _lastAValue = widget.observer.subscriber;
 
-    widget.observer.subscribeResult((value) => setState(() => _lastAValue = value));
+    widget.observer
+        .subscribeResult((value) => setState(() => _lastAValue = value));
   }
 
   @override

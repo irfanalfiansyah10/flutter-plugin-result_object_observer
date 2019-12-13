@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
-import 'package:mcnmr_result_object_observer/ObjectObserver.dart';
+import 'package:mcnmr_result_object_observer/Holder.dart';
 
 class BothObserverBuilder<A, B> extends StatefulWidget {
-  final ObjectObserver<A, B> observer;
+  final Holder<A, B> observer;
   final Widget Function(BuildContext context, A object, B subscriber) builder;
 
   BothObserverBuilder({
@@ -11,7 +11,8 @@ class BothObserverBuilder<A, B> extends StatefulWidget {
   });
 
   @override
-  State<BothObserverBuilder<A, B>> createState() => _BothObserverBuilderState<A, B>();
+  State<BothObserverBuilder<A, B>> createState() =>
+      _BothObserverBuilderState<A, B>();
 }
 
 class _BothObserverBuilderState<A, B> extends State<BothObserverBuilder<A, B>> {
@@ -24,8 +25,10 @@ class _BothObserverBuilderState<A, B> extends State<BothObserverBuilder<A, B>> {
     _lastAValue = widget.observer.value;
     _lastBValue = widget.observer.subscriber;
 
-    widget.observer.subscribeObject((value) => setState(() => _lastAValue = value));
-    widget.observer.subscribeResult((value) => setState(() => _lastBValue = value));
+    widget.observer
+        .subscribeObject((value) => setState(() => _lastAValue = value));
+    widget.observer
+        .subscribeResult((value) => setState(() => _lastBValue = value));
   }
 
   @override
