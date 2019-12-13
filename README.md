@@ -1,6 +1,6 @@
 # mcnmr_result_object_observer
 
-Observer when object or the result changed
+Observer when object or the result changed. Usage, description, and example will be added later cause i'm still busy yet.
 
 ## Getting Started
 
