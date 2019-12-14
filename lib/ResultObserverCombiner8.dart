@@ -13,7 +13,7 @@ class ResultObserverCombiner8<A, B, C, D, E, F, G, H, I>
   Holder<dynamic, H> observerH;
 
   I _value;
-  get value => _value;
+  I get value => _value;
   set value(I newValue) {
     if (_value == null) {
       _value = newValue;
@@ -46,47 +46,47 @@ class ResultObserverCombiner8<A, B, C, D, E, F, G, H, I>
     observerG = g;
     observerH = h;
 
-    value = map(a.subscriber, b.subscriber, c.subscriber, d.subscriber,
-        e.subscriber, f.subscriber, g.subscriber, h.subscriber);
+    value = map(a.result, b.result, c.result, d.result, e.result, f.result,
+        g.result, h.result);
 
     a.subscribeResult((v) {
-      value = map(v, b.subscriber, c.subscriber, d.subscriber, e.subscriber,
-          f.subscriber, g.subscriber, h.subscriber);
+      value = map(v, b.result, c.result, d.result, e.result, f.result, g.result,
+          h.result);
     });
 
     b.subscribeResult((v) {
-      value = map(a.subscriber, v, c.subscriber, d.subscriber, e.subscriber,
-          f.subscriber, g.subscriber, h.subscriber);
+      value = map(a.result, v, c.result, d.result, e.result, f.result, g.result,
+          h.result);
     });
 
     c.subscribeResult((v) {
-      value = map(a.subscriber, b.subscriber, v, d.subscriber, e.subscriber,
-          f.subscriber, g.subscriber, h.subscriber);
+      value = map(a.result, b.result, v, d.result, e.result, f.result, g.result,
+          h.result);
     });
 
     d.subscribeResult((v) {
-      value = map(a.subscriber, b.subscriber, c.subscriber, v, e.subscriber,
-          f.subscriber, g.subscriber, h.subscriber);
+      value = map(a.result, b.result, c.result, v, e.result, f.result, g.result,
+          h.result);
     });
 
     e.subscribeResult((v) {
-      value = map(a.subscriber, b.subscriber, c.subscriber, d.subscriber, v,
-          f.subscriber, g.subscriber, h.subscriber);
+      value = map(a.result, b.result, c.result, d.result, v, f.result, g.result,
+          h.result);
     });
 
     f.subscribeResult((v) {
-      value = map(a.subscriber, b.subscriber, c.subscriber, d.subscriber,
-          e.subscriber, v, g.subscriber, h.subscriber);
+      value = map(a.result, b.result, c.result, d.result, e.result, v, g.result,
+          h.result);
     });
 
     g.subscribeResult((v) {
-      value = map(a.subscriber, b.subscriber, c.subscriber, d.subscriber,
-          e.subscriber, f.subscriber, v, h.subscriber);
+      value = map(a.result, b.result, c.result, d.result, e.result, f.result, v,
+          h.result);
     });
 
     h.subscribeResult((v) {
-      value = map(a.subscriber, b.subscriber, c.subscriber, d.subscriber,
-          e.subscriber, f.subscriber, g.subscriber, v);
+      value = map(a.result, b.result, c.result, d.result, e.result, f.result,
+          g.result, v);
     });
   }
 

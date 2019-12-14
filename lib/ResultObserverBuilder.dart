@@ -21,7 +21,7 @@ class _ResultObserverBuilderState<A> extends State<ResultObserverBuilder<A>> {
   @override
   void initState() {
     super.initState();
-    _lastAValue = widget.observer.subscriber;
+    _lastAValue = widget.observer.result;
 
     widget.observer
         .subscribeResult((value) => setState(() => _lastAValue = value));

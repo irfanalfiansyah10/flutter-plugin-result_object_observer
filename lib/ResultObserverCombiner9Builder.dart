@@ -25,7 +25,7 @@ class ResultObserverCombiner9Builder<A, B, C, D, E, F, G, H, I, J>
       G resultG,
       H resultH,
       I resultI,
-      J subscriber) builder;
+      J result) builder;
 
   ResultObserverCombiner9Builder(
       {@required this.observer,
@@ -64,15 +64,15 @@ class _ResultObserverCombiner9BuilderState<A, B, C, D, E, F, G, H, I, J>
   @override
   void initState() {
     super.initState();
-    _lastAValue = widget.observer.observerA.subscriber;
-    _lastBValue = widget.observer.observerB.subscriber;
-    _lastCValue = widget.observer.observerC.subscriber;
-    _lastDValue = widget.observer.observerD.subscriber;
-    _lastEValue = widget.observer.observerE.subscriber;
-    _lastFValue = widget.observer.observerF.subscriber;
-    _lastGValue = widget.observer.observerG.subscriber;
-    _lastHValue = widget.observer.observerH.subscriber;
-    _lastIValue = widget.observer.observerI.subscriber;
+    _lastAValue = widget.observer.observerA.result;
+    _lastBValue = widget.observer.observerB.result;
+    _lastCValue = widget.observer.observerC.result;
+    _lastDValue = widget.observer.observerD.result;
+    _lastEValue = widget.observer.observerE.result;
+    _lastFValue = widget.observer.observerF.result;
+    _lastGValue = widget.observer.observerG.result;
+    _lastHValue = widget.observer.observerH.result;
+    _lastIValue = widget.observer.observerI.result;
     _lastJValue = widget.observer.value;
 
     if (widget.observeResultAChange) {

@@ -22,8 +22,8 @@ class _BothObserverBuilderState<A, B> extends State<BothObserverBuilder<A, B>> {
   @override
   void initState() {
     super.initState();
-    _lastAValue = widget.observer.value;
-    _lastBValue = widget.observer.subscriber;
+    _lastAValue = widget.observer.object;
+    _lastBValue = widget.observer.result;
 
     widget.observer
         .subscribeObject((value) => setState(() => _lastAValue = value));

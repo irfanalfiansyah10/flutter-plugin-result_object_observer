@@ -6,7 +6,7 @@ class ResultObserverCombiner2<A, B, C> extends ChangeNotifier {
   Holder<dynamic, A> observerA;
   Holder<dynamic, B> observerB;
 
-  get value => _value;
+  C get value => _value;
   C _value;
   set value(C newValue) {
     if (_value == null) {
@@ -25,14 +25,14 @@ class ResultObserverCombiner2<A, B, C> extends ChangeNotifier {
       Holder<dynamic, A> a, Holder<dynamic, B> b, C Function(A, B) map) {
     observerA = a;
     observerB = b;
-    value = map(a.subscriber, b.subscriber);
+    value = map(a.result, b.result);
 
     a.subscribeResult((v) {
-      value = map(v, b.subscriber);
+      value = map(v, b.result);
     });
 
     b.subscribeResult((v) {
-      value = map(a.subscriber, v);
+      value = map(a.result, v);
     });
   }
 

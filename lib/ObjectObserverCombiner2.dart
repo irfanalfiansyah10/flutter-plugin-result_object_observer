@@ -5,7 +5,7 @@ class ObjectObserverCombiner2<A, B, C> extends ChangeNotifier {
   Holder<A, dynamic> observerA;
   Holder<B, dynamic> observerB;
 
-  get value => _value;
+  C get value => _value;
   C _value;
   set value(C newValue) {
     if (_value == null) {
@@ -24,14 +24,14 @@ class ObjectObserverCombiner2<A, B, C> extends ChangeNotifier {
       Holder<A, dynamic> a, Holder<B, dynamic> b, C Function(A, B) map) {
     observerA = a;
     observerB = b;
-    value = map(a.value, b.value);
+    value = map(a.object, b.object);
 
     a.subscribeObject((v) {
-      value = map(v, b.value);
+      value = map(v, b.object);
     });
 
     b.subscribeObject((v) {
-      value = map(a.value, v);
+      value = map(a.object, v);
     });
   }
 

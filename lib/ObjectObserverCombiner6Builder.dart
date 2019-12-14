@@ -43,12 +43,12 @@ class _ObjectObserverCombiner6BuilderState<A, B, C, D, E, F, G>
   @override
   void initState() {
     super.initState();
-    _lastAValue = widget.observer.observerA.value;
-    _lastBValue = widget.observer.observerB.value;
-    _lastCValue = widget.observer.observerC.value;
-    _lastDValue = widget.observer.observerD.value;
-    _lastEValue = widget.observer.observerE.value;
-    _lastFValue = widget.observer.observerF.value;
+    _lastAValue = widget.observer.observerA.object;
+    _lastBValue = widget.observer.observerB.object;
+    _lastCValue = widget.observer.observerC.object;
+    _lastDValue = widget.observer.observerD.object;
+    _lastEValue = widget.observer.observerE.object;
+    _lastFValue = widget.observer.observerF.object;
     _lastGValue = widget.observer.value;
 
     if (widget.observeObjectAChange) {

@@ -1,60 +1,66 @@
 import 'package:flutter/widgets.dart';
 
-class Holder<Object, Subscriber> extends ChangeNotifier {
-  final Subscriber Function(Object obj) predictable;
+class Holder<Object, Result> extends ChangeNotifier {
+  final Result Function(Object obj) predictable;
 
-  Object _value;
-  Object get value => _value;
-  set value(Object newValue) {
-    if (_value == null) {
-      _value = newValue;
-      _subscriber = predictable(_value);
+  Object _object;
+  Object get object => _object;
+  set object(Object newValue) {
+    if (_object == null) {
+      _object = newValue;
+      _result = predictable(_object);
       notifyListeners();
       return;
     }
 
-    if (_value == newValue) return;
+    if (_object == newValue) return;
 
-    _value = newValue;
-    _subscriber = predictable(_value);
+    _object = newValue;
+    _result = predictable(_object);
     notifyListeners();
   }
 
-  Subscriber _subscriber;
-  Subscriber get subscriber => _subscriber;
-  set subscriber(Subscriber newValue) {
-    if (_subscriber == null) {
-      _subscriber = newValue;
+  Result _result;
+  Result get result => _result;
+  set result(Result newValue) {
+    if (_result == null) {
+      _result = newValue;
       notifyListeners();
       return;
     }
 
-    if (_subscriber == newValue) return;
+    if (_result == newValue) return;
 
-    _subscriber = newValue;
+    _result = newValue;
     notifyListeners();
   }
 
-  Holder(this.predictable, {Subscriber initialResult, Object initialValue}) {
-    _subscriber = initialResult;
-    _value = initialValue;
+  Holder(this.predictable, {Result initialResult, Object initialObject}) {
+    _result = initialResult;
+    _object = initialObject;
   }
 
-  void subscribeResult(Function(Subscriber subscriberValue) subs) {
+  void subscribeResult(Function(Result subscriberValue) subs) {
     addListener(() {
-      subs(_subscriber);
+      subs(_result);
     });
   }
 
   void subscribeObject(Function(Object objectValue) subs) {
     addListener(() {
-      subs(_value);
+      subs(_object);
+    });
+  }
+
+  void subscribeBoth(Function(Object o, Result s) subs) {
+    addListener(() {
+      subs(_object, _result);
     });
   }
 
   /// Just in case when you really need it
   void forceNotify() {
-    _subscriber = predictable(_value);
+    _result = predictable(_object);
     notifyListeners();
   }
 }

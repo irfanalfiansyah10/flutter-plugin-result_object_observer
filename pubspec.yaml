@@ -1,6 +1,6 @@
 name: mcnmr_result_object_observer
 description: Observer when object or the result changed.
-version: 0.0.7
+version: 0.0.8
 author: M Irfan Alfiansyah <irfanalfiansyah10@gmail.com>
 homepage: "https://github.com/irfanalfiansyah10/flutter-plugin-result_object_observer"
 

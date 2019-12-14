@@ -13,17 +13,8 @@ class ResultObserverCombiner8Builder<A, B, C, D, E, F, G, H, I>
   final bool observeResultGChange;
   final bool observeResultHChange;
   final bool observeResultChange;
-  final Widget Function(
-      BuildContext context,
-      A resultA,
-      B resultB,
-      C resultC,
-      D resultD,
-      E resultE,
-      F resultF,
-      G resultG,
-      H resultH,
-      I subscriber) builder;
+  final Widget Function(BuildContext context, A resultA, B resultB, C resultC,
+      D resultD, E resultE, F resultF, G resultG, H resultH, I result) builder;
 
   ResultObserverCombiner8Builder(
       {@required this.observer,
@@ -59,14 +50,14 @@ class _ResultObserverCombiner8BuilderState<A, B, C, D, E, F, G, H, I>
   @override
   void initState() {
     super.initState();
-    _lastAValue = widget.observer.observerA.subscriber;
-    _lastBValue = widget.observer.observerB.subscriber;
-    _lastCValue = widget.observer.observerC.subscriber;
-    _lastDValue = widget.observer.observerD.subscriber;
-    _lastEValue = widget.observer.observerE.subscriber;
-    _lastFValue = widget.observer.observerF.subscriber;
-    _lastGValue = widget.observer.observerG.subscriber;
-    _lastHValue = widget.observer.observerH.subscriber;
+    _lastAValue = widget.observer.observerA.result;
+    _lastBValue = widget.observer.observerB.result;
+    _lastCValue = widget.observer.observerC.result;
+    _lastDValue = widget.observer.observerD.result;
+    _lastEValue = widget.observer.observerE.result;
+    _lastFValue = widget.observer.observerF.result;
+    _lastGValue = widget.observer.observerG.result;
+    _lastHValue = widget.observer.observerH.result;
     _lastIValue = widget.observer.value;
 
     if (widget.observeResultAChange) {

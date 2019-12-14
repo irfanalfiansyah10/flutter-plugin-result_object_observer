@@ -11,7 +11,7 @@ class ObjectObserverCombiner7<A, B, C, D, E, F, G, H> extends ChangeNotifier {
   Holder<G, dynamic> observerG;
 
   H _value;
-  get value => _value;
+  H get value => _value;
   set value(H newValue) {
     if (_value == null) {
       _value = newValue;
@@ -42,34 +42,42 @@ class ObjectObserverCombiner7<A, B, C, D, E, F, G, H> extends ChangeNotifier {
     observerF = f;
     observerG = g;
 
-    value = map(a.value, b.value, c.value, d.value, e.value, f.value, g.value);
+    value = map(
+        a.object, b.object, c.object, d.object, e.object, f.object, g.object);
 
     a.subscribeObject((v) {
-      value = map(v, b.value, c.value, d.value, e.value, f.value, g.value);
+      value =
+          map(v, b.object, c.object, d.object, e.object, f.object, g.object);
     });
 
     b.subscribeObject((v) {
-      value = map(a.value, v, c.value, d.value, e.value, f.value, g.value);
+      value =
+          map(a.object, v, c.object, d.object, e.object, f.object, g.object);
     });
 
     c.subscribeObject((v) {
-      value = map(a.value, b.value, v, d.value, e.value, f.value, g.value);
+      value =
+          map(a.object, b.object, v, d.object, e.object, f.object, g.object);
     });
 
     d.subscribeObject((v) {
-      value = map(a.value, b.value, c.value, v, e.value, f.value, g.value);
+      value =
+          map(a.object, b.object, c.object, v, e.object, f.object, g.object);
     });
 
     e.subscribeObject((v) {
-      value = map(a.value, b.value, c.value, d.value, v, f.value, g.value);
+      value =
+          map(a.object, b.object, c.object, d.object, v, f.object, g.object);
     });
 
     f.subscribeObject((v) {
-      value = map(a.value, b.value, c.value, d.value, e.value, v, g.value);
+      value =
+          map(a.object, b.object, c.object, d.object, e.object, v, g.object);
     });
 
     g.subscribeObject((v) {
-      value = map(a.value, b.value, c.value, d.value, e.value, f.value, v);
+      value =
+          map(a.object, b.object, c.object, d.object, e.object, f.object, v);
     });
   }
 

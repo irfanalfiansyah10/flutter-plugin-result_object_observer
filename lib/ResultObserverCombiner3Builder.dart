@@ -8,8 +8,7 @@ class ResultObserverCombiner3Builder<A, B, C, D> extends StatefulWidget {
   final bool observeResultCChange;
   final bool observeResultChange;
   final Widget Function(
-          BuildContext context, A resultA, B resultB, C resultC, D subscriber)
-      builder;
+      BuildContext context, A resultA, B resultB, C resultC, D result) builder;
 
   ResultObserverCombiner3Builder(
       {@required this.observer,
@@ -34,9 +33,9 @@ class _ResultObserverCombiner3BuilderState<A, B, C, D>
   @override
   void initState() {
     super.initState();
-    _lastAValue = widget.observer.observerA.subscriber;
-    _lastBValue = widget.observer.observerB.subscriber;
-    _lastCValue = widget.observer.observerC.subscriber;
+    _lastAValue = widget.observer.observerA.result;
+    _lastBValue = widget.observer.observerB.result;
+    _lastCValue = widget.observer.observerC.result;
     _lastDValue = widget.observer.value;
 
     if (widget.observeResultAChange) {

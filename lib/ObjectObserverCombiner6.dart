@@ -10,7 +10,7 @@ class ObjectObserverCombiner6<A, B, C, D, E, F, G> extends ChangeNotifier {
   Holder<F, dynamic> observerF;
 
   G _value;
-  get value => _value;
+  G get value => _value;
   set value(G newValue) {
     if (_value == null) {
       _value = newValue;
@@ -39,30 +39,30 @@ class ObjectObserverCombiner6<A, B, C, D, E, F, G> extends ChangeNotifier {
     observerE = e;
     observerF = f;
 
-    value = map(a.value, b.value, c.value, d.value, e.value, f.value);
+    value = map(a.object, b.object, c.object, d.object, e.object, f.object);
 
     a.subscribeObject((v) {
-      value = map(v, b.value, c.value, d.value, e.value, f.value);
+      value = map(v, b.object, c.object, d.object, e.object, f.object);
     });
 
     b.subscribeObject((v) {
-      value = map(a.value, v, c.value, d.value, e.value, f.value);
+      value = map(a.object, v, c.object, d.object, e.object, f.object);
     });
 
     c.subscribeObject((v) {
-      value = map(a.value, b.value, v, d.value, e.value, f.value);
+      value = map(a.object, b.object, v, d.object, e.object, f.object);
     });
 
     d.subscribeObject((v) {
-      value = map(a.value, b.value, c.value, v, e.value, f.value);
+      value = map(a.object, b.object, c.object, v, e.object, f.object);
     });
 
     e.subscribeObject((v) {
-      value = map(a.value, b.value, c.value, d.value, v, f.value);
+      value = map(a.object, b.object, c.object, d.object, v, f.object);
     });
 
     f.subscribeObject((v) {
-      value = map(a.value, b.value, c.value, d.value, e.value, v);
+      value = map(a.object, b.object, c.object, d.object, e.object, v);
     });
   }
 

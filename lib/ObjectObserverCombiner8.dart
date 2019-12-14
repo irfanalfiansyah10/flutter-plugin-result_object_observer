@@ -13,7 +13,7 @@ class ObjectObserverCombiner8<A, B, C, D, E, F, G, H, I>
   Holder<H, dynamic> observerH;
 
   I _value;
-  get value => _value;
+  I get value => _value;
   set value(I newValue) {
     if (_value == null) {
       _value = newValue;
@@ -46,47 +46,47 @@ class ObjectObserverCombiner8<A, B, C, D, E, F, G, H, I>
     observerG = g;
     observerH = h;
 
-    value = map(
-        a.value, b.value, c.value, d.value, e.value, f.value, g.value, h.value);
+    value = map(a.object, b.object, c.object, d.object, e.object, f.object,
+        g.object, h.object);
 
     a.subscribeObject((v) {
-      value =
-          map(v, b.value, c.value, d.value, e.value, f.value, g.value, h.value);
+      value = map(v, b.object, c.object, d.object, e.object, f.object, g.object,
+          h.object);
     });
 
     b.subscribeObject((v) {
-      value =
-          map(a.value, v, c.value, d.value, e.value, f.value, g.value, h.value);
+      value = map(a.object, v, c.object, d.object, e.object, f.object, g.object,
+          h.object);
     });
 
     c.subscribeObject((v) {
-      value =
-          map(a.value, b.value, v, d.value, e.value, f.value, g.value, h.value);
+      value = map(a.object, b.object, v, d.object, e.object, f.object, g.object,
+          h.object);
     });
 
     d.subscribeObject((v) {
-      value =
-          map(a.value, b.value, c.value, v, e.value, f.value, g.value, h.value);
+      value = map(a.object, b.object, c.object, v, e.object, f.object, g.object,
+          h.object);
     });
 
     e.subscribeObject((v) {
-      value =
-          map(a.value, b.value, c.value, d.value, v, f.value, g.value, h.value);
+      value = map(a.object, b.object, c.object, d.object, v, f.object, g.object,
+          h.object);
     });
 
     f.subscribeObject((v) {
-      value =
-          map(a.value, b.value, c.value, d.value, e.value, v, g.value, h.value);
+      value = map(a.object, b.object, c.object, d.object, e.object, v, g.object,
+          h.object);
     });
 
     g.subscribeObject((v) {
-      value =
-          map(a.value, b.value, c.value, d.value, e.value, f.value, v, h.value);
+      value = map(a.object, b.object, c.object, d.object, e.object, f.object, v,
+          h.object);
     });
 
     h.subscribeObject((v) {
-      value =
-          map(a.value, b.value, c.value, d.value, e.value, f.value, g.value, v);
+      value = map(a.object, b.object, c.object, d.object, e.object, f.object,
+          g.object, v);
     });
   }
 

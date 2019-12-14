@@ -6,8 +6,8 @@ class ObjectObserverCombiner2Builder<A, B, C> extends StatefulWidget {
   final bool observeObjectAChange;
   final bool observeObjectBChange;
   final bool observeResultChange;
-  final Widget Function(
-      BuildContext context, A objectA, B objectB, C subscriber) builder;
+  final Widget Function(BuildContext context, A objectA, B objectB, C result)
+      builder;
 
   ObjectObserverCombiner2Builder(
       {@required this.observer,
@@ -30,8 +30,8 @@ class _ObjectObserverCombiner2BuilderState<A, B, C>
   @override
   void initState() {
     super.initState();
-    _lastAValue = widget.observer.observerA.value;
-    _lastBValue = widget.observer.observerB.value;
+    _lastAValue = widget.observer.observerA.object;
+    _lastBValue = widget.observer.observerB.object;
     _lastCValue = widget.observer.value;
 
     if (widget.observeObjectAChange) {
